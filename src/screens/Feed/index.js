@@ -1,6 +1,7 @@
 import React from "react";
 import {
   View,
+  SafeAreaView,
   Text,
   FlatList,
   Image,
@@ -50,7 +51,7 @@ export default function Feed() {
 
   function renderItem({ item: post }) {
     return (
-      <View style={styles.post}>
+      <SafeAreaView style={styles.post}>
         <View style={styles.postHeader}>
           <View style={styles.userInfo}>
             <Text style={styles.author}>{post.author}</Text>
@@ -97,7 +98,7 @@ export default function Feed() {
             <Text style={styles.description}>{post.description}</Text>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 
