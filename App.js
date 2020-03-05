@@ -1,19 +1,16 @@
 import React from "react";
-import { Image, View, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity, StyleSheet } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+import "./src/config/StatusBarConfig";
 
 import Feed from "./src/screens/Feed";
 
 import logo from "./assets/logo.png";
 import camera from "./assets/camera.png";
-import igtv from "./assets/igtv.png";
 import send from "./assets/send.png";
-
-function LogoTitle() {
-  return <Image style={{ width: 95, height: 27 }} source={logo} />;
-}
 
 const Stack = createStackNavigator();
 
@@ -28,7 +25,7 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: "bold"
           },
-          headerTitle: props => <LogoTitle {...props} />,
+          headerTitle: () => <Image style={styles.logo} source={logo} />,
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => alert("Here opens the camera page!")}
@@ -40,22 +37,11 @@ export default function App() {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <View style={{ flexDirection: "row", marginRight: 10 }}>
-              <TouchableOpacity
-                onPress={() => alert("Here opens the igtv page!")}
-              >
-                <Image style={{ width: 18, height: 19 }} source={igtv} />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => alert("Here opens the send page!")}
-              >
-                <Image
-                  style={{ width: 21, height: 18, marginLeft: 15 }}
-                  source={send}
-                />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              onPress={() => alert("Here opens the send page!")}
+            >
+              <Image style={styles.discordIcon} source={send} />
+            </TouchableOpacity>
           )
         }}
       >
@@ -64,3 +50,15 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  logo: {
+    width: 95,
+    height: 27
+  },
+  discordIcon: {
+    width: 21,
+    height: 18,
+    marginRight: 10
+  }
+});
