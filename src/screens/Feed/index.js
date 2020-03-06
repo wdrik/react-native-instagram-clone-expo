@@ -9,15 +9,11 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import options from "../../../assets/options.png";
 import like from "../../../assets/like.png";
 import comment from "../../../assets/comment.png";
 import send from "../../../assets/send.png";
 import save from "../../../assets/save.png";
-
-const Tab = createBottomTabNavigator();
 
 export default function Feed() {
   const posts = [
@@ -106,22 +102,14 @@ export default function Feed() {
     );
   }
 
-  function FeedTeste() {
-    return (
-      <View>
-        <FlatList
-          data={posts}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-        />
-      </View>
-    );
-  }
-
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="FeedTeste" component={FeedTeste} />
-    </Tab.Navigator>
+    <View>
+      <FlatList
+        data={posts}
+        keyExtractor={item => item.id}
+        renderItem={renderItem}
+      />
+    </View>
   );
 }
 
